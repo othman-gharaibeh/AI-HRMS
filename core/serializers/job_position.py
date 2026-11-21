@@ -24,4 +24,8 @@ class JobPositionSerializer(serializers.ModelSerializer):
             isinstance(skill, str) for skill in value
         ):
             raise serializers.ValidationError("Expected a list of skill strings.")
+        if any(not skill.strip() for skill in value):
+            raise serializers.ValidationError(
+                "Skill names cannot be empty or whitespace-only."
+            )
         return value

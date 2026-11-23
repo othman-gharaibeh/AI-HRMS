@@ -1,0 +1,34 @@
+interview_question_task:
+  description: >
+    Inputs:
+    **candidate_resume:** {candidate_resume}
+    **job_title:** {job_title}
+    **job_description:** {job_description}
+    **screening_report:** {screening_report}
+
+    Task:
+    1. Review the candidate's resume, the job title and description,
+       and the findings in the screening report.
+
+    2. Generate technical_questions to verify the candidate's claimed
+       skills and probe the missing skills identified in the screening report.
+
+    3. Generate behavioral_questions to assess soft skills, communication,
+       and overall fit for the role.
+
+    4. Generate follow_up_questions to dig into specific past experiences,
+       project claims, or borderline gaps noted in the screening report.
+
+    5. Ensure every question is tailored to the role and strictly grounded
+       in the provided inputs. Do not assume unstated experience or invent
+       qualifications.
+  expected_output: >
+    Return ONLY a JSON object (do NOT wrap it in json fences, start directly
+    with {) using this exact structure:
+
+    {
+      "technical_questions": ["question", "..."],
+      "behavioral_questions": ["question", "..."],
+      "follow_up_questions": ["question", "..."]
+    }
+  agent: interview_question_generator

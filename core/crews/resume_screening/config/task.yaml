@@ -1,0 +1,48 @@
+resume_screening_task:
+  description: >
+    Inputs:
+    **candidate_resume:** {candidate_resume}
+    **job_title:** {job_title}
+    **job_description:** {job_description}
+    **required_skills:** {required_skills}
+
+    Task:
+    1. Analyze the candidate's resume and extract relevant information,
+       including education, qualifications, and work experience.
+
+    2. Compare the candidate's qualifications and experience against
+       the job title, description, and required skills.
+
+    3. Extract the candidate's technical skills and soft skills.
+
+    4. Identify the candidate's strengths and missing or insufficiently
+       demonstrated skills based on the job requirements.
+
+    5. Calculate an overall match score between 0 and 100 based on
+       how well the candidate meets the job requirements.
+
+    6. Ensure the evaluation is objective and supported by evidence
+       from the resume. Do not assume or invent qualifications.
+
+    7. Recommend exactly one of:
+        "proceed" = strong match, invite to interview.
+        "hold" = partial match, needs human review.
+        "reject" = weak match.
+
+    8. Write a short 2-3 sentence summary justifying the score
+       and recommendation.
+
+  expected_output: >
+    Return ONLY a JSON object (do NOT wrap it in json fences, start directly
+    with {) using this exact structure:
+
+    {
+      "score": <integer 0-100>,
+      "extracted_technical_skills": ["skill", "..."],
+      "extracted_soft_skills": ["skill", "..."],
+      "strengths": ["strength", "..."],
+      "missing_skills": ["skill", "..."],
+      "recommendation": "proceed | hold | reject",
+      "summary": "A short justification of the score."
+    }
+  agent: resume_screening_agent

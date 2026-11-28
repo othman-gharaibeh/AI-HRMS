@@ -99,3 +99,6 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.MultiPartParser",
     ],
 }
+OPENAI_MODEL = config("OPENAI_MODEL")
+OPENAI_APIKEY = config("OPENAI_APIKEY")
+OPENAI_DEFAULT_TEMPERATURE = config("OPENAI_DEFAULT_TEMPERATURE", cast=float)
